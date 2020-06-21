@@ -1,9 +1,17 @@
 import React from "react";
 
-function Grid() {
+function Grid(props) {
+  const { gridSize, cellSize } = props;
   return (
     <section>
-      <h3>Grid</h3>
+      <div
+        className="grid"
+        style={{
+          width: gridSize.width,
+          height: gridSize.height,
+          backgroundSize: `${cellSize}px ${cellSize}px`,
+        }}
+      ></div>
     </section>
   );
 }
