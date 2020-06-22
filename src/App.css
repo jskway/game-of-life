@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+}
+
+.grid {
+  position: relative;
+  margin: 0 auto;
+  background-color: #bed4ff;
+  background-image: linear-gradient(#fff 1px, transparent 1px),
+    linear-gradient(90deg, #fff 1px, transparent 1px);
+}
+
+.cell {
+  background: #23f0c7;
+  position: absolute;
+}
