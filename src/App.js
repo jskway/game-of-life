@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, createRef } from "react";
 import "./App.css";
 import Grid from "./components/Grid.js";
 import Controls from "./components/Controls.js";
@@ -9,8 +9,8 @@ function App() {
     width: 500,
     height: 500,
   });
-
   const [cellSize, setCellSize] = useState(20);
+  const gridRef = createRef();
 
   return (
     <div className="App">
@@ -18,7 +18,7 @@ function App() {
         <h1>Conway's Game of Life </h1>
       </header>
       <About />
-      <Grid gridSize={gridSize} cellSize={cellSize} />
+      <Grid ref={gridRef} gridSize={gridSize} cellSize={cellSize} />
       <Controls />
     </div>
   );
