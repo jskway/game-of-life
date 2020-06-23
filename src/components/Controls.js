@@ -8,7 +8,7 @@ function Controls({ isRunning, setIsRunning, rows, cols }) {
   const [timeoutHandler, setTimeoutHandler] = useState(null);
 
   const { grid, setGrid } = useContext(GridContext);
-  const { liveCells, setLiveCells } = useContext(CellContext);
+  const { setLiveCells } = useContext(CellContext);
 
   const start = () => {
     setIsRunning(true);

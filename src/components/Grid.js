@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Cell from "./Cell.js";
-import { getLiveCells, getGridOffset, generateNext } from "../helpers.js";
+import { getLiveCells, getGridOffset } from "../helpers.js";
 import GridContext from "../contexts/gridContext.js";
 import SizeContext from "../contexts/sizeContext.js";
 import CellContext from "../contexts/cellContext.js";
