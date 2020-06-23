@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Cell from "./Cell.js";
-import { makeCells, getGridOffset } from "../helpers.js";
+import { getLiveCells, getGridOffset, generateNext } from "../helpers.js";
+import GridContext from "../contexts/gridContext.js";
+import SizeContext from "../contexts/sizeContext.js";
+import CellContext from "../contexts/cellContext.js";
 
-function Grid({ rows, cols, cellSize, grid }, ref) {
-  const [cells, setCells] = useState([]);
+function Grid({ rows, cols }, ref) {
+  const { liveCells, setLiveCells } = useContext(CellContext);
+
+  const { grid, setGrid } = useContext(GridContext);
+  const { gridSize } = useContext(SizeContext);
+
+  const { cellSize, height, width } = gridSize;
 
   const handleClick = (e) => {
     const gridOffset = getGridOffset(ref);
@@ -23,11 +31,11 @@ function Grid({ rows, cols, cellSize, grid }, ref) {
 
     // If x and y are within bounds of the grid, toggle the state of that cell
     if (x >= 0 && x <= cols && y >= 0 && y <= rows) {
-      grid[y][x] = !grid[y][x];
+      setGrid([...grid, (grid[y][x] = !grid[y][x])]);
     }
 
     // Update the state of the cells based on the updated grid
-    setCells(makeCells(rows, cols, grid));
+    setLiveCells(getLiveCells(rows, cols, grid));
   };
 
   return (
@@ -37,12 +45,12 @@ function Grid({ rows, cols, cellSize, grid }, ref) {
         ref={ref}
         className="grid"
         style={{
-          width: cols * cellSize,
-          height: rows * cellSize,
+          width,
+          height,
           backgroundSize: `${cellSize}px ${cellSize}px`,
         }}
       >
-        {cells.map((cell) => (
+        {liveCells.map((cell) => (
           <Cell
             className="cell"
             cellSize={cellSize}
