@@ -13,7 +13,7 @@ function Grid({ rows, cols }, ref) {
 
   const { cellSize, height, width } = gridSize;
 
-  const handleClick = (e) => {
+  const toggleCell = (e) => {
     const gridOffset = getGridOffset(ref);
     // MouseEvent.clientX/Y returns
     // The horizontal and vertical coordinates within the App component
@@ -41,7 +41,7 @@ function Grid({ rows, cols }, ref) {
   return (
     <section>
       <div
-        onClick={handleClick}
+        onClick={toggleCell}
         ref={ref}
         className="grid"
         style={{
