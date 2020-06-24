@@ -4,7 +4,7 @@ import GridContext from "../contexts/gridContext.js";
 import CellContext from "../contexts/cellContext.js";
 import { getLiveCells } from "../helpers.js";
 
-function Controls({ isRunning, setIsRunning, rows, cols }) {
+function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
   const { grid, setGrid } = useContext(GridContext);
   const { setLiveCells } = useContext(CellContext);
   const [timeoutId, setTimeoutId] = useState(null);
@@ -47,6 +47,7 @@ function Controls({ isRunning, setIsRunning, rows, cols }) {
 
     setGrid(newGrid);
     setLiveCells(getLiveCells(rows, cols, newGrid));
+    setGeneration((prevGen) => prevGen + 1);
   };
 
   const makeNewGenerations = (grid, cols, rows) => {
@@ -72,6 +73,7 @@ function Controls({ isRunning, setIsRunning, rows, cols }) {
 
     setGrid(newGrid);
     setLiveCells(getLiveCells(rows, cols, newGrid));
+    setGeneration((prevGen) => prevGen + 1);
 
     const id = setTimeout(() => {
       makeNewGenerations(newGrid, cols, rows);

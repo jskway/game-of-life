@@ -65,5 +65,4 @@ function Grid({ rows, cols }, ref) {
 }
 
 const forwardedGrid = React.forwardRef(Grid);
-
 export default forwardedGrid;

@@ -22,6 +22,7 @@ function App() {
   const [liveCells, setLiveCells] = useState([]);
 
   const [isRunning, setIsRunning] = useState(false);
+  const [generation, setGeneration] = useState(0);
 
   const gridRef = createRef();
 
@@ -35,11 +36,19 @@ function App() {
         <GridContext.Provider value={{ grid, setGrid }}>
           <CellContext.Provider value={{ liveCells, setLiveCells }}>
             <Grid ref={gridRef} cols={cols} rows={rows} />
+            <div
+              style={{
+                margin: "20px auto",
+              }}
+            >
+              Generation: {generation}
+            </div>
             <Controls
               isRunning={isRunning}
               setIsRunning={setIsRunning}
               cols={cols}
               rows={rows}
+              setGeneration={setGeneration}
             />
           </CellContext.Provider>
         </GridContext.Provider>
