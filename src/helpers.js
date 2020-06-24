@@ -59,7 +59,7 @@ export const getNeighborCount = (grid, x, y, cols, rows) => {
   const directions = [
     [-1, -1],
     [-1, 0],
-    [-1, -1],
+    [-1, 1],
     [0, 1],
     [1, 1],
     [1, 0],
