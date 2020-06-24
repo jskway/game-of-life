@@ -24,6 +24,13 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
     makeGenerationOnce(grid, cols, rows);
   };
 
+  const clear = () => {
+    const emptyGrid = makeEmptyGrid(rows, cols);
+    setGrid(emptyGrid);
+    setLiveCells(getLiveCells(rows, cols, emptyGrid));
+    setGeneration(0);
+  };
+
   const makeGenerationOnce = (grid, cols, rows) => {
     const newGrid = makeEmptyGrid(rows, cols);
 
@@ -92,6 +99,7 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
           <button onClick={start}>Start</button>
         )}
         <button onClick={next}>Next</button>
+        <button onClick={clear}>Clear</button>
       </div>
     </section>
   );
