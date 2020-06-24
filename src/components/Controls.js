@@ -11,7 +11,7 @@ function Controls({ isRunning, setIsRunning, rows, cols }) {
 
   const start = () => {
     setIsRunning(true);
-    next();
+    makeNewGenerations(grid, cols, rows);
   };
 
   const stop = () => {
@@ -21,10 +21,35 @@ function Controls({ isRunning, setIsRunning, rows, cols }) {
   };
 
   const next = () => {
-    makeNewGeneration(grid, cols, rows);
+    makeGenerationOnce(grid, cols, rows);
   };
 
-  const makeNewGeneration = (grid, cols, rows) => {
+  const makeGenerationOnce = (grid, cols, rows) => {
+    const newGrid = makeEmptyGrid(rows, cols);
+
+    for (let y = 0; y < rows; y++) {
+      for (let x = 0; x < cols; x++) {
+        let neighbors = getNeighborCount(grid, x, y, cols, rows);
+
+        if (grid[y][x]) {
+          if (neighbors === 2 || neighbors === 3) {
+            newGrid[y][x] = true;
+          } else {
+            newGrid[y][x] = false;
+          }
+        } else {
+          if (!grid[y][x] && neighbors === 3) {
+            newGrid[y][x] = true;
+          }
+        }
+      }
+    }
+
+    setGrid(newGrid);
+    setLiveCells(getLiveCells(rows, cols, newGrid));
+  };
+
+  const makeNewGenerations = (grid, cols, rows) => {
     const newGrid = makeEmptyGrid(rows, cols);
 
     for (let y = 0; y < rows; y++) {
@@ -49,7 +74,7 @@ function Controls({ isRunning, setIsRunning, rows, cols }) {
     setLiveCells(getLiveCells(rows, cols, newGrid));
 
     const id = setTimeout(() => {
-      makeNewGeneration(newGrid, cols, rows);
+      makeNewGenerations(newGrid, cols, rows);
     }, 1000);
 
     setTimeoutId(id);
