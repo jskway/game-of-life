@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { makeEmptyGrid, getNeighborCount } from "../helpers.js";
+import { makeEmptyGrid, makeRandomGrid, getNeighborCount } from "../helpers.js";
 import GridContext from "../contexts/gridContext.js";
 import CellContext from "../contexts/cellContext.js";
 import { getLiveCells } from "../helpers.js";
@@ -29,6 +29,12 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
     setGrid(emptyGrid);
     setLiveCells(getLiveCells(rows, cols, emptyGrid));
     setGeneration(0);
+  };
+
+  const random = () => {
+    const randomGrid = makeRandomGrid(rows, cols);
+    setGrid(randomGrid);
+    setLiveCells(getLiveCells(rows, cols, randomGrid));
   };
 
   const makeGenerationOnce = (grid, cols, rows) => {
@@ -100,6 +106,7 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
         )}
         <button onClick={next}>Next</button>
         <button onClick={clear}>Clear</button>
+        <button onClick={random}>Random</button>
       </div>
     </section>
   );
