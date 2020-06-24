@@ -5,35 +5,32 @@ import CellContext from "../contexts/cellContext.js";
 import { getLiveCells } from "../helpers.js";
 
 function Controls({ isRunning, setIsRunning, rows, cols }) {
-  const [timeoutHandler, setTimeoutHandler] = useState(null);
-
   const { grid, setGrid } = useContext(GridContext);
   const { setLiveCells } = useContext(CellContext);
+  const [timeoutId, setTimeoutId] = useState(null);
 
   const start = () => {
     setIsRunning(true);
-    makeNewGeneration(timeoutHandler, cols, rows);
+    next();
   };
 
   const stop = () => {
+    clearTimeout(timeoutId);
+    setTimeoutId(null);
     setIsRunning(false);
-    if (timeoutHandler) {
-      window.clearTimeout(timeoutHandler);
-      setTimeoutHandler(null);
-    }
   };
 
   const next = () => {
-    makeNewGeneration(timeoutHandler, cols, rows);
+    makeNewGeneration(grid, cols, rows);
   };
 
-  const makeNewGeneration = (timeoutHandler, cols, rows) => {
+  const makeNewGeneration = (grid, cols, rows) => {
     const newGrid = makeEmptyGrid(rows, cols);
 
     for (let y = 0; y < rows; y++) {
       for (let x = 0; x < cols; x++) {
         let neighbors = getNeighborCount(grid, x, y, cols, rows);
-        console.log(neighbors);
+
         if (grid[y][x]) {
           if (neighbors === 2 || neighbors === 3) {
             newGrid[y][x] = true;
@@ -51,15 +48,11 @@ function Controls({ isRunning, setIsRunning, rows, cols }) {
     setGrid(newGrid);
     setLiveCells(getLiveCells(rows, cols, newGrid));
 
-    //setTimeoutHandler(
-    //  window.setTimeout(() => {
-    //    makeNewGeneration(timeoutHandler);
-    //  }, 1000)
-    //);
+    const id = setTimeout(() => {
+      makeNewGeneration(newGrid, cols, rows);
+    }, 1000);
 
-    //timeoutHandler = window.setTimeout(() => {
-    //  makeNewGeneration(timeoutHandler);
-    //}, 1000);
+    setTimeoutId(id);
   };
 
   return (
