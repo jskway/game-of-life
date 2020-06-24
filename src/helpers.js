@@ -12,6 +12,23 @@ export const makeEmptyGrid = (rows, cols) => {
   return grid;
 };
 
+export const makeRandomGrid = (rows, cols) => {
+  let grid = [];
+  for (let y = 0; y < rows; y++) {
+    grid[y] = [];
+    for (let x = 0; x < cols; x++) {
+      const random = Math.random();
+      if (random < 0.5) {
+        grid[y][x] = false;
+      } else {
+        grid[y][x] = true;
+      }
+    }
+  }
+
+  return grid;
+};
+
 // Returns an array of objects
 // Each object represents a cell that is 'alive'
 // and holds it's x, y grid index
