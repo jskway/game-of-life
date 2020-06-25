@@ -5,12 +5,12 @@
 .grid {
   position: relative;
   margin: 0 auto;
-  background-color: #bed4ff;
+  background-color: #8fc1e3;
   background-image: linear-gradient(#fff 1px, transparent 1px),
     linear-gradient(90deg, #fff 1px, transparent 1px);
 }
 
 .cell {
-  background: #23f0c7;
+  background: #31708e;
   position: absolute;
 }
