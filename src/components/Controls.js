@@ -56,6 +56,11 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
         setGrid(exploderGrid);
         setLiveCells(getLiveCells(rows, cols, exploderGrid));
         break;
+      case "tumbler":
+        const tumblerGrid = makePresetGrid(rows, cols, "tumbler");
+        setGrid(tumblerGrid);
+        setLiveCells(getLiveCells(rows, cols, tumblerGrid));
+        break;
       case "none":
         setGrid(makeEmptyGrid());
         break;
@@ -137,6 +142,7 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
           <option value="none">Select a Sample Configuration</option>
           <option value="glider">Glider</option>
           <option value="exploder">Exploder</option>
+          <option value="tumbler">Tumbler</option>
         </select>
       </div>
     </section>
