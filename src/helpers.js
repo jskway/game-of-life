@@ -57,14 +57,11 @@ export const getGridOffset = (gridRef) => {
   // y: == to this.top
   const rect = gridRef.current.getBoundingClientRect();
 
-  // window.page[ X || Y ]Offset returns
-  // A number representing the number of pixels that the document has already been scrolled from the upper left corner of the window, horizontally and vertically
-
   return {
-    // Grid's distance from the left of the viewport + how far right the user has scrolled
-    x: rect.left + window.pageXOffset,
-    // Grid's distance from the top of the viewport + how far down the user has scrolled
-    y: rect.top + window.pageYOffset,
+    // Grid's distance from the left of the viewport 
+     x: rect.left, 
+    // Grid's distance from the top of the viewport  
+     y: rect.top  
   };
 };
 
