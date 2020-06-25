@@ -97,10 +97,34 @@ export const makeRandomGrid = (rows, cols) => {
   return grid;
 };
 
-export const makePresetGrid = (rows, cols, coordinates) => {
+const presetCoordinates = {
+  glider: [
+    {x: 12, y: 11},
+    {x: 13, y: 12},
+    {x: 13, y: 13},
+    {x: 12, y: 13},
+    {x: 11, y: 13}
+  ],
+  exploder: [
+    {x: 10, y: 10},
+    {x: 10, y: 11},
+    {x: 10, y: 12},
+    {x: 10, y: 13},
+    {x: 10, y: 14},
+    {x: 12, y: 10},
+    {x: 12, y: 14},
+    {x: 14, y: 10},
+    {x: 14, y: 11},
+    {x: 14, y: 12},
+    {x: 14, y: 13},
+    {x: 14, y: 14},
+  ]
+}
+
+export const makePresetGrid = (rows, cols, preset) => {
   const grid = makeEmptyGrid(rows, cols);
   
-  coordinates.forEach(coordinate => {
+  presetCoordinates[preset].forEach(coordinate => {
     // y comes first because it represents the row
     // x represents the column
     // The empty grid is initialized in the same manner
@@ -109,3 +133,5 @@ export const makePresetGrid = (rows, cols, coordinates) => {
 
   return grid;
 }
+
+

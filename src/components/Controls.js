@@ -47,17 +47,14 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
 
     switch(preset){
       case "glider":
-        const coordinates = [
-            {x: 12, y: 11},
-            {x: 13, y: 12},
-            {x: 13, y: 13},
-            {x: 12, y: 13},
-            {x: 11, y: 13}
-          ];
-
-        const gliderGrid = makePresetGrid(rows, cols, coordinates);
+        const gliderGrid = makePresetGrid(rows, cols, "glider");
         setGrid(gliderGrid);
         setLiveCells(getLiveCells(rows, cols, gliderGrid));
+        break;
+      case "exploder":
+        const exploderGrid = makePresetGrid(rows, cols, "exploder");
+        setGrid(exploderGrid);
+        setLiveCells(getLiveCells(rows, cols, exploderGrid));
         break;
       case "none":
         setGrid(makeEmptyGrid());
@@ -66,8 +63,6 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
         setGrid(makeEmptyGrid());
     }
   };
-
-  
 
   const makeGenerationOnce = (grid, cols, rows) => {
     const newGrid = makeEmptyGrid(rows, cols);
@@ -141,6 +136,7 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
         <select disabled={isRunning ? true : false} onChange={changePreset} value={preset}>
           <option value="none">Select a Sample Configuration</option>
           <option value="glider">Glider</option>
+          <option value="exploder">Exploder</option>
         </select>
       </div>
     </section>
