@@ -10,6 +10,7 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
   const [timeoutId, setTimeoutId] = useState(null);
   const [ preset, setPreset ] = useState("none");
   const [ interval, setInterval ] = useState(500);
+  const [ speed, setSpeed ] = useState(5);
 
   const start = () => {
     setIsRunning(true);
@@ -68,6 +69,11 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
         setGrid(makeEmptyGrid());
     }
   };
+
+  const changeInterval = (e) => {
+    setSpeed(e.target.value);
+    setInterval(2000/e.target.value);
+  }
 
   const makeGenerationOnce = (grid, cols, rows) => {
     const newGrid = makeEmptyGrid(rows, cols);
@@ -144,6 +150,7 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
           <option value="exploder">Exploder</option>
           <option value="tumbler">Tumbler</option>
         </select>
+        <input disabled={isRunning ? true : false} type="range" min="1" max="30" value={speed} onChange={changeInterval}/>
       </div>
     </section>
   );
