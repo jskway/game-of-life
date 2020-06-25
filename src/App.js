@@ -33,6 +33,7 @@ function App() {
         <h1>Conway's Game of Life </h1>
       </header>
       <About />
+      <Rules />
       <SizeContext.Provider value={{ gridSize, setGridSize }}>
         <GridContext.Provider value={{ grid, setGrid }}>
           <CellContext.Provider value={{ liveCells, setLiveCells }}>
@@ -51,7 +52,6 @@ function App() {
               rows={rows}
               setGeneration={setGeneration}
             />
-            <Rules />
           </CellContext.Provider>
         </GridContext.Provider>
       </SizeContext.Provider>
