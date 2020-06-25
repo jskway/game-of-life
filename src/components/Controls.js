@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { makeEmptyGrid, makeRandomGrid, getNeighborCount } from "../helpers.js";
+import { makeEmptyGrid, makeRandomGrid, getNeighborCount, makeGliderGrid } from "../helpers.js";
 import GridContext from "../contexts/gridContext.js";
 import CellContext from "../contexts/cellContext.js";
 import { getLiveCells } from "../helpers.js";
@@ -9,6 +9,7 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
   const { setLiveCells } = useContext(CellContext);
   const [timeoutId, setTimeoutId] = useState(null);
   const [ preset, setPreset ] = useState("none");
+  const [ interval, setInterval ] = useState(500);
 
   const start = () => {
     setIsRunning(true);
@@ -46,9 +47,9 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
 
     switch(preset){
       case "glider":
-        const gliderGrid = makeGliderGrid();
+        const gliderGrid = makeGliderGrid(rows, cols);
         setGrid(gliderGrid);
-        setLiveCells(getLiveCells( rows, cols, gliderGrid));
+        setLiveCells(getLiveCells(rows, cols, gliderGrid));
         break;
       case "none":
         setGrid(makeEmptyGrid());
@@ -58,25 +59,7 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
     }
   };
 
-  const makeGliderGrid = () => {
-    const gliderGrid = makeEmptyGrid(rows, cols);
-    const gliderCoordinates = [
-      {x: 12, y: 11},
-      {x: 13, y: 12},
-      {x: 13, y: 13},
-      {x: 12, y: 13},
-      {x: 11, y: 13}
-    ];
-
-    gliderCoordinates.forEach(coordinate => {
-      // y comes first because it represents the row
-      // x represents the column
-      // The empty grid is initialized in the same manner
-      gliderGrid[coordinate.y][coordinate.x] = true;
-    });
-
-    return gliderGrid;
-  }
+  
 
   const makeGenerationOnce = (grid, cols, rows) => {
     const newGrid = makeEmptyGrid(rows, cols);
@@ -130,7 +113,7 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
 
     const id = setTimeout(() => {
       makeNewGenerations(newGrid, cols, rows);
-    }, 1000);
+    }, interval);
 
     setTimeoutId(id);
   };

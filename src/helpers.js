@@ -29,6 +29,26 @@ export const makeRandomGrid = (rows, cols) => {
   return grid;
 };
 
+export const makeGliderGrid = (rows, cols) => {
+    const gliderGrid = makeEmptyGrid(rows, cols);
+    const gliderCoordinates = [
+      {x: 12, y: 11},
+      {x: 13, y: 12},
+      {x: 13, y: 13},
+      {x: 12, y: 13},
+      {x: 11, y: 13}
+    ];
+
+    gliderCoordinates.forEach(coordinate => {
+      // y comes first because it represents the row
+      // x represents the column
+      // The empty grid is initialized in the same manner
+      gliderGrid[coordinate.y][coordinate.x] = true;
+    });
+
+    return gliderGrid;
+  }
+
 // Returns an array of objects
 // Each object represents a cell that is 'alive'
 // and holds it's x, y grid index
