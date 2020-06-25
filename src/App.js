@@ -3,6 +3,7 @@ import "./App.css";
 import Grid from "./components/Grid.js";
 import Controls from "./components/Controls.js";
 import About from "./components/About.js";
+import Rules from "./components/Rules.js";
 import { makeEmptyGrid } from "./helpers.js";
 import GridContext from "./contexts/gridContext.js";
 import SizeContext from "./contexts/sizeContext.js";
@@ -50,6 +51,7 @@ function App() {
               rows={rows}
               setGeneration={setGeneration}
             />
+            <Rules />
           </CellContext.Provider>
         </GridContext.Provider>
       </SizeContext.Provider>
