@@ -10,9 +10,9 @@ import CellContext from "./contexts/cellContext.js";
 
 function App() {
   const [gridSize, setGridSize] = useState({
-    cellSize: 25,
-    height: 525,
-    width: 525,
+    cellSize: 20,
+    height: 500,
+    width: 500,
   });
   const rows = gridSize.height / gridSize.cellSize;
   const cols = gridSize.width / gridSize.cellSize;
