@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { makeEmptyGrid, makeRandomGrid, getNeighborCount, makeGliderGrid } from "../helpers.js";
+import { makeEmptyGrid, makeRandomGrid, getNeighborCount, makePresetGrid } from "../helpers.js";
 import GridContext from "../contexts/gridContext.js";
 import CellContext from "../contexts/cellContext.js";
 import { getLiveCells } from "../helpers.js";
@@ -47,7 +47,15 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
 
     switch(preset){
       case "glider":
-        const gliderGrid = makeGliderGrid(rows, cols);
+        const coordinates = [
+            {x: 12, y: 11},
+            {x: 13, y: 12},
+            {x: 13, y: 13},
+            {x: 12, y: 13},
+            {x: 11, y: 13}
+          ];
+
+        const gliderGrid = makePresetGrid(rows, cols, coordinates);
         setGrid(gliderGrid);
         setLiveCells(getLiveCells(rows, cols, gliderGrid));
         break;

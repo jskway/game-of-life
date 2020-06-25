@@ -1,54 +1,3 @@
-// Returns an array filled with (rows-1) nested arrays
-// Each nested array will have (cols-1) falses
-export const makeEmptyGrid = (rows, cols) => {
-  let grid = [];
-  for (let y = 0; y < rows; y++) {
-    grid[y] = [];
-    for (let x = 0; x < cols; x++) {
-      grid[y][x] = false;
-    }
-  }
-
-  return grid;
-};
-
-export const makeRandomGrid = (rows, cols) => {
-  let grid = [];
-  for (let y = 0; y < rows; y++) {
-    grid[y] = [];
-    for (let x = 0; x < cols; x++) {
-      const random = Math.random();
-      if (random < 0.5) {
-        grid[y][x] = false;
-      } else {
-        grid[y][x] = true;
-      }
-    }
-  }
-
-  return grid;
-};
-
-export const makeGliderGrid = (rows, cols) => {
-    const gliderGrid = makeEmptyGrid(rows, cols);
-    const gliderCoordinates = [
-      {x: 12, y: 11},
-      {x: 13, y: 12},
-      {x: 13, y: 13},
-      {x: 12, y: 13},
-      {x: 11, y: 13}
-    ];
-
-    gliderCoordinates.forEach(coordinate => {
-      // y comes first because it represents the row
-      // x represents the column
-      // The empty grid is initialized in the same manner
-      gliderGrid[coordinate.y][coordinate.x] = true;
-    });
-
-    return gliderGrid;
-  }
-
 // Returns an array of objects
 // Each object represents a cell that is 'alive'
 // and holds it's x, y grid index
@@ -116,3 +65,47 @@ export const getNeighborCount = (grid, x, y, cols, rows) => {
 
   return count;
 };
+
+// Returns an array filled with (rows-1) nested arrays
+// Each nested array will have (cols-1) falses
+export const makeEmptyGrid = (rows, cols) => {
+  let grid = [];
+  for (let y = 0; y < rows; y++) {
+    grid[y] = [];
+    for (let x = 0; x < cols; x++) {
+      grid[y][x] = false;
+    }
+  }
+
+  return grid;
+};
+
+export const makeRandomGrid = (rows, cols) => {
+  let grid = [];
+  for (let y = 0; y < rows; y++) {
+    grid[y] = [];
+    for (let x = 0; x < cols; x++) {
+      const random = Math.random();
+      if (random < 0.5) {
+        grid[y][x] = false;
+      } else {
+        grid[y][x] = true;
+      }
+    }
+  }
+
+  return grid;
+};
+
+export const makePresetGrid = (rows, cols, coordinates) => {
+  const grid = makeEmptyGrid(rows, cols);
+  
+  coordinates.forEach(coordinate => {
+    // y comes first because it represents the row
+    // x represents the column
+    // The empty grid is initialized in the same manner
+    grid[coordinate.y][coordinate.x] = true;
+  });
+
+  return grid;
+}
