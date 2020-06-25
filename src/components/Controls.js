@@ -22,6 +22,7 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
 
   const next = () => {
     makeGenerationOnce(grid, cols, rows);
+    setGeneration((gen) => gen + 1);
   };
 
   const clear = () => {
@@ -60,7 +61,6 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
 
     setGrid(newGrid);
     setLiveCells(getLiveCells(rows, cols, newGrid));
-    setGeneration((prevGen) => prevGen + 1);
   };
 
   const makeNewGenerations = (grid, cols, rows) => {
@@ -86,7 +86,7 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
 
     setGrid(newGrid);
     setLiveCells(getLiveCells(rows, cols, newGrid));
-    setGeneration((prevGen) => prevGen + 1);
+    setGeneration((gen) => gen + 1);
 
     const id = setTimeout(() => {
       makeNewGenerations(newGrid, cols, rows);
