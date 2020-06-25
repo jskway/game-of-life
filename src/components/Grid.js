@@ -29,6 +29,8 @@ function Grid({ rows, cols }, ref) {
     const x = Math.floor(offsetX / cellSize);
     const y = Math.floor(offsetY / cellSize);
 
+    console.log(`x: ${x} y: ${y}`);
+
     // If x and y are within bounds of the grid, toggle the state of that cell
     if (x >= 0 && x <= cols && y >= 0 && y <= rows) {
       setGrid([...grid, (grid[y][x] = !grid[y][x])]);

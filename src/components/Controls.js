@@ -31,6 +31,7 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
     setGrid(emptyGrid);
     setLiveCells(getLiveCells(rows, cols, emptyGrid));
     setGeneration(0);
+    setPreset("none");
   };
 
   const random = () => {
@@ -40,8 +41,42 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
   };
 
   const changePreset = (e) => {
-    setPreset(e.target.value);
+    const preset = e.target.value
+    setPreset(preset);
+
+    switch(preset){
+      case "glider":
+        const gliderGrid = makeGliderGrid();
+        setGrid(gliderGrid);
+        setLiveCells(getLiveCells( rows, cols, gliderGrid));
+        break;
+      case "none":
+        setGrid(makeEmptyGrid());
+        break;
+      default:
+        setGrid(makeEmptyGrid());
+    }
   };
+
+  const makeGliderGrid = () => {
+    const gliderGrid = makeEmptyGrid(rows, cols);
+    const gliderCoordinates = [
+      {x: 12, y: 11},
+      {x: 13, y: 12},
+      {x: 13, y: 13},
+      {x: 12, y: 13},
+      {x: 11, y: 13}
+    ];
+
+    gliderCoordinates.forEach(coordinate => {
+      // y comes first because it represents the row
+      // x represents the column
+      // The empty grid is initialized in the same manner
+      gliderGrid[coordinate.y][coordinate.x] = true;
+    });
+
+    return gliderGrid;
+  }
 
   const makeGenerationOnce = (grid, cols, rows) => {
     const newGrid = makeEmptyGrid(rows, cols);
