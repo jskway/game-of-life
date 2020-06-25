@@ -37,6 +37,7 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
   };
 
   const random = () => {
+    setGeneration(0);
     const randomGrid = makeRandomGrid(rows, cols);
     setGrid(randomGrid);
     setLiveCells(getLiveCells(rows, cols, randomGrid));
@@ -45,6 +46,7 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
   const changePreset = (e) => {
     const preset = e.target.value
     setPreset(preset);
+    setGeneration(0);
 
     switch(preset){
       case "glider":
