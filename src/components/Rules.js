@@ -16,6 +16,7 @@ function Rules() {
           All other live cells die in the next generation. Similarly, all other
           dead cells stay dead.
         </li>
+        <li>Cells that are off the edge of the grid are assumed to be dead.</li>
       </ul>
     </section>
   );
