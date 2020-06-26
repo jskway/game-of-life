@@ -3,6 +3,7 @@ import "./App.css";
 import Grid from "./components/Grid.js";
 import Controls from "./components/Controls.js";
 import About from "./components/About.js";
+import Rules from "./components/Rules.js";
 import { makeEmptyGrid } from "./helpers.js";
 import GridContext from "./contexts/gridContext.js";
 import SizeContext from "./contexts/sizeContext.js";
@@ -32,17 +33,12 @@ function App() {
         <h1>Conway's Game of Life </h1>
       </header>
       <About />
+      <Rules />
       <SizeContext.Provider value={{ gridSize, setGridSize }}>
         <GridContext.Provider value={{ grid, setGrid }}>
           <CellContext.Provider value={{ liveCells, setLiveCells }}>
             <Grid ref={gridRef} cols={cols} rows={rows} />
-            <div
-              style={{
-                margin: "20px auto",
-              }}
-            >
-              Generation: {generation}
-            </div>
+            <div className="generation">Generation: {generation}</div>
             <Controls
               isRunning={isRunning}
               setIsRunning={setIsRunning}

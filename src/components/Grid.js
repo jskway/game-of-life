@@ -42,6 +42,7 @@ function Grid({ rows, cols }, ref) {
 
   return (
     <section>
+      <h2>Game</h2>
       <div
         onClick={toggleCell}
         ref={ref}
