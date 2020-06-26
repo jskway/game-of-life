@@ -1,5 +1,42 @@
 .App {
   text-align: center;
+  padding-top: 2%;
+  padding-bottom: 5%;
+}
+
+p {
+  line-height: 1.4;
+  text-align: justify;
+}
+
+h1 {
+  margin-bottom: 5%;
+}
+
+a {
+  text-decoration: none;
+}
+
+.about,
+.rules {
+  width: 40%;
+  margin: 0 auto 3%;
+}
+
+.rules h3 {
+  text-align: left;
+}
+.about h3 {
+  text-align: left;
+}
+
+.rules ul {
+  text-align: left;
+  list-style: url("assets/virus.png");
+}
+
+.rules li {
+  margin: 10px auto;
 }
 
 .grid {
@@ -13,4 +50,12 @@
 .cell {
   background: #31708e;
   position: absolute;
+}
+
+.controls-speed {
+  margin: 15px auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 190px;
 }

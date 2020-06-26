@@ -1,5 +1,10 @@
 import React, { useContext, useState } from "react";
-import { makeEmptyGrid, makeRandomGrid, getNeighborCount, makePresetGrid } from "../helpers.js";
+import {
+  makeEmptyGrid,
+  makeRandomGrid,
+  getNeighborCount,
+  makePresetGrid,
+} from "../helpers.js";
 import GridContext from "../contexts/gridContext.js";
 import CellContext from "../contexts/cellContext.js";
 import { getLiveCells } from "../helpers.js";
@@ -8,9 +13,9 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
   const { grid, setGrid } = useContext(GridContext);
   const { setLiveCells } = useContext(CellContext);
   const [timeoutId, setTimeoutId] = useState(null);
-  const [ preset, setPreset ] = useState("none");
-  const [ interval, setInterval ] = useState(500);
-  const [ speed, setSpeed ] = useState(5);
+  const [preset, setPreset] = useState("none");
+  const [interval, setInterval] = useState(500);
+  const [speed, setSpeed] = useState(5);
 
   const start = () => {
     setIsRunning(true);
@@ -44,11 +49,11 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
   };
 
   const changePreset = (e) => {
-    const preset = e.target.value
+    const preset = e.target.value;
     setPreset(preset);
     setGeneration(0);
 
-    switch(preset){
+    switch (preset) {
       case "glider":
         const gliderGrid = makePresetGrid(rows, cols, "glider");
         setGrid(gliderGrid);
@@ -74,8 +79,8 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
 
   const changeInterval = (e) => {
     setSpeed(e.target.value);
-    setInterval(2000/e.target.value);
-  }
+    setInterval(2000 / e.target.value);
+  };
 
   const makeGenerationOnce = (grid, cols, rows) => {
     const newGrid = makeEmptyGrid(rows, cols);
@@ -136,23 +141,42 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
 
   return (
     <section>
-      <h3>Controls</h3>
       <div>
         {isRunning ? (
           <button onClick={stop}>Stop</button>
         ) : (
           <button onClick={start}>Start</button>
         )}
-        <button disabled={isRunning ? true : false} onClick={next}>Next</button>
-        <button disabled={isRunning ? true : false} onClick={clear}>Clear</button>
-        <button disabled={isRunning ? true : false} onClick={random}>Random</button>
-        <select disabled={isRunning ? true : false} onChange={changePreset} value={preset}>
+        <button disabled={isRunning ? true : false} onClick={next}>
+          Next
+        </button>
+        <button disabled={isRunning ? true : false} onClick={clear}>
+          Clear
+        </button>
+        <button disabled={isRunning ? true : false} onClick={random}>
+          Random
+        </button>
+        <select
+          disabled={isRunning ? true : false}
+          onChange={changePreset}
+          value={preset}
+        >
           <option value="none">Select a Sample Configuration</option>
           <option value="glider">Glider</option>
           <option value="exploder">Exploder</option>
           <option value="tumbler">Tumbler</option>
         </select>
-        <input disabled={isRunning ? true : false} type="range" min="1" max="30" value={speed} onChange={changeInterval}/>
+        <div className="controls-speed">
+          <span>Speed:</span>
+          <input
+            disabled={isRunning ? true : false}
+            type="range"
+            min="1"
+            max="30"
+            value={speed}
+            onChange={changeInterval}
+          />
+        </div>
       </div>
     </section>
   );

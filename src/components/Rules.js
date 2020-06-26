@@ -2,7 +2,7 @@ import React from "react";
 
 function Rules() {
   return (
-    <section>
+    <section className="rules">
       <h3>Rules</h3>
       <ul>
         <li>Each cell can be 'live' or 'dead'</li>
