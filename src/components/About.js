@@ -3,7 +3,7 @@ import React from "react";
 function About() {
   return (
     <section className="about">
-      <h3>About</h3>
+      <h2>About</h2>
       <p>
         A <strong>cellular automaton</strong> is a program that operates on data
         typically stored in a 2D grid.

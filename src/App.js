@@ -38,13 +38,7 @@ function App() {
         <GridContext.Provider value={{ grid, setGrid }}>
           <CellContext.Provider value={{ liveCells, setLiveCells }}>
             <Grid ref={gridRef} cols={cols} rows={rows} />
-            <div
-              style={{
-                margin: "20px auto",
-              }}
-            >
-              Generation: {generation}
-            </div>
+            <div className="generation">Generation: {generation}</div>
             <Controls
               isRunning={isRunning}
               setIsRunning={setIsRunning}

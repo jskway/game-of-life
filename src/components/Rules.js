@@ -3,7 +3,7 @@ import React from "react";
 function Rules() {
   return (
     <section className="rules">
-      <h3>Rules</h3>
+      <h2>Rules</h2>
       <ul>
         <li>Each cell can be 'live' or 'dead'</li>
         <li>
