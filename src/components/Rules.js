@@ -4,7 +4,7 @@ function Rules() {
   return (
     <section className="rules">
       <h2>Rules</h2>
-      <ul>
+      <ol>
         <li>Each cell can be 'live' or 'dead'</li>
         <li>
           Each cell interacts with its eight neighbors, which are the cells that
@@ -17,7 +17,7 @@ function Rules() {
           dead cells stay dead.
         </li>
         <li>Cells that are off the edge of the grid are assumed to be dead.</li>
-      </ul>
+      </ol>
     </section>
   );
 }
