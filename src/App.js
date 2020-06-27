@@ -8,6 +8,7 @@ import { makeEmptyGrid } from "./helpers.js";
 import GridContext from "./contexts/gridContext.js";
 import SizeContext from "./contexts/sizeContext.js";
 import CellContext from "./contexts/cellContext.js";
+import GithubLogo from "./assets/GitHub-Mark-64px.png";
 
 function App() {
   const [gridSize, setGridSize] = useState({
@@ -49,6 +50,12 @@ function App() {
           </CellContext.Provider>
         </GridContext.Provider>
       </SizeContext.Provider>
+      <footer>
+        <a href="https://github.com/jackskim/game-of-life">
+          <img src={GithubLogo} alt="Github logo" />
+        </a>
+        <p>Designed & Developed by Jack Kim</p>
+      </footer>
     </div>
   );
 }

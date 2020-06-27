@@ -2,8 +2,7 @@
 
 .App {
   text-align: center;
-  padding-top: 2%;
-  padding-bottom: 5%;
+  padding: 2% 0;
   font-family: "Raleway", sans-serif;
   font-size: 1.6rem;
   color: #687864;
@@ -89,4 +88,18 @@ a {
   align-items: center;
   width: 190px;
   font-size: 1.4rem;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  margin-top: 70px;
+}
+
+footer img {
+  width: 25px;
+  height: auto;
 }
