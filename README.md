@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/6a210973-89c5-4a2c-a413-3cf9699efeb7/deploy-status)](https://app.netlify.com/sites/gameoflife-jsk/deploys)
 
-The **Game of Life** is a very famous **_celluar automaton_** devised by the British mathematician [John Horton Conway](https://en.wikipedia.org/wiki/John_Horton_Conway)
+The **Game of Life** is a very famous **_cellular automaton_** devised by the British mathematician [John Horton Conway](https://en.wikipedia.org/wiki/John_Horton_Conway)
 in 1970.
 
 It is a zero-player game, meaning that its progression is determined by its initial state and requires no further input. You
