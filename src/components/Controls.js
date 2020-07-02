@@ -142,7 +142,7 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
 
   return (
     <section>
-      <div>
+      <div class="btn-container">
         {isRunning ? (
           <button onClick={stop}>Stop</button>
         ) : (
@@ -167,8 +167,10 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
           <option value="exploder">Exploder</option>
           <option value="tumbler">Tumbler</option>
         </select>
-        <div className="controls-speed">
-          <span>Speed:</span>
+        <div className="speed-controls">
+          <span>
+            <strong>Speed:</strong>
+          </span>
           <input
             disabled={isRunning ? true : false}
             type="range"

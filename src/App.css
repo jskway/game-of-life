@@ -40,10 +40,11 @@ a {
   font-size: 1.6rem;
 }
 
-.rules h2 {
+.about h2 {
   text-align: left;
 }
-.about h2 {
+
+.rules h2 {
   text-align: left;
 }
 .rules {
@@ -81,7 +82,7 @@ a {
   font-weight: 600;
 }
 
-.controls-speed {
+.speed-controls {
   margin: 15px auto;
   display: flex;
   justify-content: space-between;
