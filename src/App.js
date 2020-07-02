@@ -11,16 +11,29 @@ import CellContext from "./contexts/cellContext.js";
 import GithubLogo from "./assets/GitHub-Mark-64px.png";
 
 function App() {
+  let height, width;
+  if (window.innerWidth > 768) {
+    height = 600;
+    width = 800;
+  } else if (window.innerWidth < 768 && window.innerWidth > 500) {
+    height = 500;
+    width = 500;
+  } else {
+    height = 300;
+    width = 300;
+  }
+
   const [gridSize, setGridSize] = useState({
     cellSize: 20,
-    height: 500,
-    width: 500,
+    height,
+    width,
   });
+
   const rows = gridSize.height / gridSize.cellSize;
   const cols = gridSize.width / gridSize.cellSize;
   const midPoint = {
-    x: Math.floor(rows / 2),
-    y: Math.floor(cols / 2),
+    y: Math.floor(rows / 2),
+    x: Math.floor(cols / 2),
   };
 
   const [grid, setGrid] = useState(makeEmptyGrid(rows, cols));

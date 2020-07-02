@@ -19,6 +19,12 @@ h1 {
   font-size: 4.2rem;
 }
 
+@media (max-width: 500px) {
+  h1 {
+    margin-bottom: 15%;
+  }
+}
+
 h2 {
   font-size: 2.4rem;
 }
@@ -38,6 +44,20 @@ a {
   width: 40%;
   margin: 0 auto 3%;
   font-size: 1.6rem;
+}
+
+@media (max-width: 768px) {
+  .about,
+  .rules {
+    width: 70%;
+  }
+}
+
+@media (max-width: 500px) {
+  .about,
+  .rules {
+    width: 80%;
+  }
 }
 
 .about h2 {
@@ -89,6 +109,12 @@ a {
   width: 40%;
 }
 
+@media (max-width: 500px) {
+  .btn-container {
+    flex-direction: column;
+  }
+}
+
 .btn-container button {
   cursor: pointer;
   background: #cb4e4e;
@@ -101,6 +127,12 @@ a {
   text-transform: uppercase;
   outline: none;
   transition: none;
+}
+
+@media (max-width: 500px) {
+  .btn-container button {
+    margin-bottom: 10px;
+  }
 }
 
 .btn-container button:disabled {
