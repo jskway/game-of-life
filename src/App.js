@@ -38,7 +38,7 @@ function App() {
       <SizeContext.Provider value={{ gridSize, setGridSize }}>
         <GridContext.Provider value={{ grid, setGrid }}>
           <CellContext.Provider value={{ liveCells, setLiveCells }}>
-            <Grid ref={gridRef} cols={cols} rows={rows} />
+            <Grid ref={gridRef} cols={cols} rows={rows} isRunning={isRunning} />
             <div className="generation">Generation: {generation}</div>
             <Controls
               isRunning={isRunning}

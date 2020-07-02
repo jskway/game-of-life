@@ -5,7 +5,7 @@ import GridContext from "../contexts/gridContext.js";
 import SizeContext from "../contexts/sizeContext.js";
 import CellContext from "../contexts/cellContext.js";
 
-function Grid({ rows, cols }, ref) {
+function Grid({ rows, cols, isRunning }, ref) {
   const { liveCells, setLiveCells } = useContext(CellContext);
 
   const { grid, setGrid } = useContext(GridContext);
@@ -14,6 +14,8 @@ function Grid({ rows, cols }, ref) {
   const { cellSize, height, width } = gridSize;
 
   const toggleCell = (e) => {
+    if (isRunning) return;
+
     const gridOffset = getGridOffset(ref);
     // MouseEvent.clientX/Y returns
     // The horizontal and vertical coordinates within the App component
