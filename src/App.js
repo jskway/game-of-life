@@ -18,6 +18,10 @@ function App() {
   });
   const rows = gridSize.height / gridSize.cellSize;
   const cols = gridSize.width / gridSize.cellSize;
+  const midPoint = {
+    x: Math.floor(rows / 2),
+    y: Math.floor(cols / 2),
+  };
 
   const [grid, setGrid] = useState(makeEmptyGrid(rows, cols));
 
@@ -46,6 +50,7 @@ function App() {
               cols={cols}
               rows={rows}
               setGeneration={setGeneration}
+              midPoint={midPoint}
             />
           </CellContext.Provider>
         </GridContext.Provider>
