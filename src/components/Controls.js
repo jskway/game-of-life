@@ -157,29 +157,30 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
         <button disabled={isRunning ? true : false} onClick={random}>
           Random
         </button>
-        <select
+      </div>
+      <select
+        disabled={isRunning ? true : false}
+        onChange={changePreset}
+        value={preset}
+      >
+        <option value="none">Select a Preset </option>
+        <option value="glider">Glider</option>
+        <option value="exploder">Exploder</option>
+        <option value="tumbler">Tumbler</option>
+      </select>
+
+      <div className="speed-controls">
+        <span>
+          <strong>Speed:</strong>
+        </span>
+        <input
           disabled={isRunning ? true : false}
-          onChange={changePreset}
-          value={preset}
-        >
-          <option value="none">Select a Sample Configuration</option>
-          <option value="glider">Glider</option>
-          <option value="exploder">Exploder</option>
-          <option value="tumbler">Tumbler</option>
-        </select>
-        <div className="speed-controls">
-          <span>
-            <strong>Speed:</strong>
-          </span>
-          <input
-            disabled={isRunning ? true : false}
-            type="range"
-            min="1"
-            max="30"
-            value={speed}
-            onChange={changeInterval}
-          />
-        </div>
+          type="range"
+          min="1"
+          max="30"
+          value={speed}
+          onChange={changeInterval}
+        />
       </div>
     </section>
   );
