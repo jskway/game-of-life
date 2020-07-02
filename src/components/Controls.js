@@ -46,6 +46,7 @@ function Controls({ isRunning, setIsRunning, rows, cols, setGeneration }) {
     const randomGrid = makeRandomGrid(rows, cols);
     setGrid(randomGrid);
     setLiveCells(getLiveCells(rows, cols, randomGrid));
+    setPreset("none");
   };
 
   const changePreset = (e) => {
