@@ -19,6 +19,12 @@ h1 {
   font-size: 4.2rem;
 }
 
+@media (max-width: 500px) {
+  h1 {
+    margin-bottom: 15%;
+  }
+}
+
 h2 {
   font-size: 2.4rem;
 }
@@ -40,10 +46,25 @@ a {
   font-size: 1.6rem;
 }
 
-.rules h2 {
+@media (max-width: 768px) {
+  .about,
+  .rules {
+    width: 70%;
+  }
+}
+
+@media (max-width: 500px) {
+  .about,
+  .rules {
+    width: 80%;
+  }
+}
+
+.about h2 {
   text-align: left;
 }
-.about h2 {
+
+.rules h2 {
   text-align: left;
 }
 .rules {
@@ -81,7 +102,61 @@ a {
   font-weight: 600;
 }
 
-.controls-speed {
+.btn-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 2%;
+  width: 40%;
+}
+
+@media (max-width: 500px) {
+  .btn-container {
+    flex-direction: column;
+  }
+}
+
+.btn-container button {
+  cursor: pointer;
+  background: #cb4e4e;
+  color: #fff;
+  box-shadow: 0 4px #ab3c3c;
+  border: none;
+  border-radius: 0 0 5px 5px;
+  padding: 10px 40px;
+  margin: 0 5px;
+  text-transform: uppercase;
+  outline: none;
+  transition: none;
+}
+
+@media (max-width: 500px) {
+  .btn-container button {
+    margin-bottom: 10px;
+  }
+}
+
+.btn-container button:disabled {
+  background: #ab3c3c;
+}
+
+.btn-container button:active {
+  box-shadow: none;
+  transform: translateY(4px);
+}
+
+select {
+  background: transparent;
+  line-height: 1;
+  border: 0;
+  padding: 0;
+  font-size: 1.4rem;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 5px 10px;
+  outline: none;
+}
+
+.speed-controls {
   margin: 15px auto;
   display: flex;
   justify-content: space-between;

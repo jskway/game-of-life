@@ -11,13 +11,30 @@ import CellContext from "./contexts/cellContext.js";
 import GithubLogo from "./assets/GitHub-Mark-64px.png";
 
 function App() {
+  let height, width;
+  if (window.innerWidth > 768) {
+    height = 600;
+    width = 800;
+  } else if (window.innerWidth < 768 && window.innerWidth > 500) {
+    height = 500;
+    width = 500;
+  } else {
+    height = 300;
+    width = 300;
+  }
+
   const [gridSize, setGridSize] = useState({
     cellSize: 20,
-    height: 500,
-    width: 500,
+    height,
+    width,
   });
+
   const rows = gridSize.height / gridSize.cellSize;
   const cols = gridSize.width / gridSize.cellSize;
+  const midPoint = {
+    y: Math.floor(rows / 2),
+    x: Math.floor(cols / 2),
+  };
 
   const [grid, setGrid] = useState(makeEmptyGrid(rows, cols));
 
@@ -38,7 +55,7 @@ function App() {
       <SizeContext.Provider value={{ gridSize, setGridSize }}>
         <GridContext.Provider value={{ grid, setGrid }}>
           <CellContext.Provider value={{ liveCells, setLiveCells }}>
-            <Grid ref={gridRef} cols={cols} rows={rows} />
+            <Grid ref={gridRef} cols={cols} rows={rows} isRunning={isRunning} />
             <div className="generation">Generation: {generation}</div>
             <Controls
               isRunning={isRunning}
@@ -46,6 +63,7 @@ function App() {
               cols={cols}
               rows={rows}
               setGeneration={setGeneration}
+              midPoint={midPoint}
             />
           </CellContext.Provider>
         </GridContext.Provider>

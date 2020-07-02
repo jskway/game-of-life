@@ -27,10 +27,10 @@ export const getGridOffset = (gridRef) => {
   const rect = gridRef.current.getBoundingClientRect();
 
   return {
-    // Grid's distance from the left of the viewport 
-     x: rect.left, 
-    // Grid's distance from the top of the viewport  
-     y: rect.top  
+    // Grid's distance from the left of the viewport
+    x: rect.left,
+    // Grid's distance from the top of the viewport
+    y: rect.top,
   };
 };
 
@@ -97,65 +97,63 @@ export const makeRandomGrid = (rows, cols) => {
   return grid;
 };
 
-const presetCoordinates = {
+const presetOffsets = {
   glider: [
-    {x: 12, y: 11},
-    {x: 13, y: 12},
-    {x: 13, y: 13},
-    {x: 12, y: 13},
-    {x: 11, y: 13}
+    { x: 0, y: -1 },
+    { x: 1, y: 0 },
+    { x: 1, y: 1 },
+    { x: 0, y: 1 },
+    { x: -1, y: 1 },
   ],
   exploder: [
-    {x: 10, y: 10},
-    {x: 10, y: 11},
-    {x: 10, y: 12},
-    {x: 10, y: 13},
-    {x: 10, y: 14},
-    {x: 12, y: 10},
-    {x: 12, y: 14},
-    {x: 14, y: 10},
-    {x: 14, y: 11},
-    {x: 14, y: 12},
-    {x: 14, y: 13},
-    {x: 14, y: 14},
+    { x: -2, y: -2 },
+    { x: -2, y: -1 },
+    { x: -2, y: 0 },
+    { x: -2, y: 1 },
+    { x: -2, y: 2 },
+    { x: 0, y: -2 },
+    { x: 0, y: 2 },
+    { x: 2, y: -2 },
+    { x: 2, y: -1 },
+    { x: 2, y: 0 },
+    { x: 2, y: 1 },
+    { x: 2, y: 2 },
   ],
   tumbler: [
-    {x: 9, y: 13},
-    {x: 9, y: 14},
-    {x: 9, y: 15},
-    {x: 10, y: 15},
-    {x: 10, y: 10},
-    {x: 11, y: 10},
-    {x: 10, y: 11},
-    {x: 11, y: 11},
-    {x: 11, y: 12},
-    {x: 11, y: 13},
-    {x: 11, y: 14},
-    {x: 13, y: 10},
-    {x: 14, y: 10},
-    {x: 14, y: 11},
-    {x: 13, y: 11},
-    {x: 13, y: 12},
-    {x: 13, y: 13},
-    {x: 13, y: 14},
-    {x: 14, y: 15},
-    {x: 15, y: 15},
-    {x: 15, y: 14},
-    {x: 15, y: 13}
+    { x: -3, y: 1 },
+    { x: -3, y: 2 },
+    { x: -3, y: 3 },
+    { x: -2, y: 3 },
+    { x: -2, y: -2 },
+    { x: -1, y: -2 },
+    { x: -2, y: -1 },
+    { x: -1, y: -1 },
+    { x: -1, y: 0 },
+    { x: -1, y: 1 },
+    { x: -1, y: 2 },
+    { x: 1, y: -2 },
+    { x: 2, y: -2 },
+    { x: 2, y: -1 },
+    { x: 1, y: -1 },
+    { x: 1, y: 0 },
+    { x: 1, y: 1 },
+    { x: 1, y: 2 },
+    { x: 2, y: 3 },
+    { x: 3, y: 3 },
+    { x: 3, y: 2 },
+    { x: 3, y: 1 },
   ],
-}
+};
 
-export const makePresetGrid = (rows, cols, preset) => {
+export const makePresetGrid = (rows, cols, midPoint, preset) => {
   const grid = makeEmptyGrid(rows, cols);
-  
-  presetCoordinates[preset].forEach(coordinate => {
+
+  presetOffsets[preset].forEach((offset) => {
     // y comes first because it represents the row
     // x represents the column
     // The empty grid is initialized in the same manner
-    grid[coordinate.y][coordinate.x] = true;
+    grid[midPoint.y + offset.y][midPoint.x + offset.x] = true;
   });
 
   return grid;
-}
-
-
+};
