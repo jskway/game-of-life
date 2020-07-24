@@ -69,7 +69,7 @@ function App() {
         </GridContext.Provider>
       </SizeContext.Provider>
       <footer>
-        <a href="https://github.com/jackskim/game-of-life">
+        <a href="https://github.com/jskway/game-of-life">
           <img src={GithubLogo} alt="Github logo" />
         </a>
         <p>Designed & Developed by Jack Kim</p>
