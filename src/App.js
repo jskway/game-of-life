@@ -8,7 +8,7 @@ import { makeEmptyGrid } from "./helpers.js";
 import GridContext from "./contexts/gridContext.js";
 import SizeContext from "./contexts/sizeContext.js";
 import CellContext from "./contexts/cellContext.js";
-import GithubLogo from "./assets/GitHub-Mark-64px.png";
+import GithubLogo from "./assets/github.png";
 
 function App() {
   let height, width;
@@ -50,8 +50,6 @@ function App() {
       <header>
         <h1>Conway's Game of Life </h1>
       </header>
-      <About />
-      <Rules />
       <SizeContext.Provider value={{ gridSize, setGridSize }}>
         <GridContext.Provider value={{ grid, setGrid }}>
           <CellContext.Provider value={{ liveCells, setLiveCells }}>
@@ -68,6 +66,10 @@ function App() {
           </CellContext.Provider>
         </GridContext.Provider>
       </SizeContext.Provider>
+      <section className="container">
+        <About />
+        <Rules />
+      </section>
       <footer>
         <a href="https://github.com/jskway/game-of-life">
           <img src={GithubLogo} alt="Github logo" />
